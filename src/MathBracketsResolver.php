@@ -27,7 +27,7 @@ class MathBracketsResolver
 
         try {
             if (str_starts_with($cleanString, ')')){
-                throw new ErrorException('неверный символ в начале примера');
+                throw new InvalidArgumentException('неверный символ в начале примера');
             }
 
             while ($iterator < strlen($cleanString) ){
@@ -40,7 +40,7 @@ class MathBracketsResolver
                         break;
                     default:
                     if (!in_array($cleanString[$iterator] , $allowed)){
-                        throw new ErrorException('неверный символ в строке');
+                        throw new InvalidArgumentException('неверный символ в строке');
                     }
                 }
                 ++$iterator;
