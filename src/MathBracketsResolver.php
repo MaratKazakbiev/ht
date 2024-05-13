@@ -1,6 +1,6 @@
 <?php
 
-require_once '../vendor/autoload.php';
+namespace Maratkazakbiev\HtOtus1;
 class MathBracketsResolver
 {
     private $string;

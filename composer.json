@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "autoload": {
         "psr-4": {
-            "Maratkazakbiev\\HtOtus1\\": "src/MathBracketsResolver.php"
+            "Maratkazakbiev\\HtOtus1\\": "src/"
         }
     },
     "authors": [
