@@ -30,6 +30,11 @@ class MathBracketsResolver
                 throw new InvalidArgumentException('неверный символ в начале примера');
             }
 
+            if (str_ends_with($cleanString, '(')){
+                throw new InvalidArgumentException('неверный символ в конце примера');
+            }
+
+
             while ($iterator < strlen($cleanString) ){
                 switch ($cleanString[$iterator]){
                     case '(':
@@ -59,4 +64,3 @@ class MathBracketsResolver
         }
     }
 }
-//test
