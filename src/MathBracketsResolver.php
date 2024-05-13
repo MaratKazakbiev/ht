@@ -1,6 +1,8 @@
 <?php
 
 namespace Maratkazakbiev\HtOtus1;
+
+use InvalidArgumentException;
 class MathBracketsResolver
 {
     private $string;
