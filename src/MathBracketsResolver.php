@@ -19,7 +19,7 @@ class MathBracketsResolver
         return $this->string;
     }
 
-    public function Resolve() :bool
+    public function Resolve() :string
     {
         $cleanString = $this->getString();
         $iterator = 0;
@@ -46,23 +46,20 @@ class MathBracketsResolver
                         ++$closedBrackets;
                         break;
                     default:
-                    if (!in_array($cleanString[$iterator] , $allowed)){
-                        throw new InvalidArgumentException('неверный символ в строке');
-                    }
+                        if (!in_array($cleanString[$iterator] , $allowed)){
+                            throw new InvalidArgumentException('неверный символ в строке');
+                        }
                 }
                 ++$iterator;
             }
         }catch (ErrorException $exception){
-            echo "Ошибка " . $exception->getMessage();
-            return false;
+            return "Ошибка " . $exception->getMessage();
         }
 
         if ($openBrackets == $closedBrackets) {
-            echo 'Пример правильный';
-            return true;
+            return 'Пример правильный';
         }  else{
-            echo 'Пример неправильный';
-            return false;
+            return 'Пример неправильный';
         }
     }
 }
