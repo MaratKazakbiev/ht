@@ -53,13 +53,13 @@ class MathBracketsResolver
                 ++$iterator;
             }
         }catch (ErrorException $exception){
-            return "Ошибка " . $exception->getMessage();
+            return "Ошибка " . $exception->getMessage() . PHP_EOL;
         }
 
         if ($openBrackets == $closedBrackets) {
-            return 'Пример правильный';
+            return 'Пример правильный' . PHP_EOL;
         }  else{
-            return 'Пример неправильный';
+            return 'Пример неправильный' . PHP_EOL;
         }
     }
 }
