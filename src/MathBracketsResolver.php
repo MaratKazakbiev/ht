@@ -3,8 +3,10 @@
 namespace Maratkazakbiev\HtOtus1;
 
 use InvalidArgumentException;
+use Maratkazakbiev\HtOtus1\Traits\ResponseTrait;
 class MathBracketsResolver
 {
+    use ResponseTrait;
     private $string;
     public function __construct($string)
     {
@@ -14,7 +16,7 @@ class MathBracketsResolver
     /**
      * @return string
      */
-    public function getString()
+    public function getString() :string
     {
         return $this->string;
     }
@@ -29,11 +31,11 @@ class MathBracketsResolver
 
         try {
             if (str_starts_with($cleanString, ')')){
-                throw new InvalidArgumentException('неверный символ в начале примера');
+                $this->sendErrorResponse('Неверный символ в начале примера');
             }
 
             if (str_ends_with($cleanString, '(')){
-                throw new InvalidArgumentException('неверный символ в конце примера');
+               $this->sendErrorResponse('Неверный символ в конце примера');
             }
 
 
@@ -47,19 +49,19 @@ class MathBracketsResolver
                         break;
                     default:
                         if (!in_array($cleanString[$iterator] , $allowed)){
-                            throw new InvalidArgumentException('неверный символ в строке');
+                            $this->sendErrorResponse('Неверный символ в строке');
                         }
                 }
                 ++$iterator;
             }
-        }catch (ErrorException $exception){
-            return "Ошибка " . $exception->getMessage() . PHP_EOL;
+        }catch (\Throwable $exception){
+            $this->sendErrorResponse("Ошибка " . $exception->getMessage());
         }
 
         if ($openBrackets == $closedBrackets) {
-            return 'Пример правильный' . PHP_EOL;
+            $this->sendSuccessResponse('Пример правильный');
         }  else{
-            return 'Пример неправильный' . PHP_EOL;
+            $this->sendSuccessResponse('Пример неправильный');
         }
     }
 }
