@@ -2,7 +2,6 @@
 
 namespace Maratkazakbiev\HtOtus1;
 
-use InvalidArgumentException;
 use Maratkazakbiev\HtOtus1\Traits\ResponseTrait;
 class MathBracketsResolver
 {
@@ -61,7 +60,7 @@ class MathBracketsResolver
         if ($openBrackets == $closedBrackets) {
             $this->sendSuccessResponse('Пример правильный');
         }  else{
-            $this->sendSuccessResponse('Пример неправильный');
+            $this->sendErrorResponse('Пример неправильный');
         }
     }
 }
